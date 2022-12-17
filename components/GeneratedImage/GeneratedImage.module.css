@@ -1,0 +1,19 @@
+@media screen and (min-width: 1200px) {
+  .headline {
+    font-size: 38px !important;
+  }
+
+  .description {
+    font-size: 18px !important;
+  }
+}
+
+@media screen and (max-width: 800px) {
+  .headline {
+    font-size: 6vw !important;
+  }
+
+  .description {
+    font-size: 3vw !important;
+  }
+}

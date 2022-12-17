@@ -1,115 +1,150 @@
 import Head from 'next/head'
-import styles from '../styles/Home.module.css';
+import * as React from 'react'
+import Card from '@mui/material/Card'
+import Typography from '@mui/material/Typography'
+import TextField from '@mui/material/TextField'
+import OutlinedInput from '@mui/material/OutlinedInput'
+import InputAdornment from '@mui/material/InputAdornment'
+import TwitterIcon from '@mui/icons-material/Twitter'
+import GitHubIcon from '@mui/icons-material/GitHub'
+import ContentCopyIcon from '@mui/icons-material/ContentCopy'
+import { MuiColorInput } from 'mui-color-input'
+import BrowserBorder from '../components/BrowserBorder/BrowserBorder'
+import GeneratedImage, { defaultBgColor, defaultColor, defaultImage, defaultTitle, defaultDescription } from '../components/GeneratedImage/GeneratedImage'
+import styles from '../styles/Home.module.css'
 
 export default function Home() {
+  const [variant, setVariant] = React.useState(1)
+  const [headline, setHeadline] = React.useState(defaultTitle)
+  const [description, setDescription] = React.useState(defaultDescription)
+  const [image, setImage] = React.useState(defaultImage)
+  const [color, setColor] = React.useState(defaultColor)
+  const [bgColor, setBgColor] = React.useState(defaultBgColor)
+
+  const headlineParam = headline ? `&title=${encodeURI(headline)}` : ''
+  const descriptionParam = description? `&description=${encodeURI(description)}` : ''
+  const colorParam = color && color !== defaultColor ? `&color=${color.replace('#', '')}` : ''
+  const bgColorParam = bgColor && bgColor !== defaultBgColor ? `&bgColor=${bgColor.replace('#', '')}` : ''
+  const imageParam = image && image !== defaultImage ? `&image=${encodeURI(image)}` : ''
+  // todo variant param
+
+  const apiLink = `https://img.quest/api/v1?${headlineParam}${descriptionParam}${colorParam}${bgColorParam}${imageParam}`
+
   return (
     <div className={styles.container}>
       <Head>
-        <title>Create Next App</title>
+        <title>IMG Quest | An open-source API to generate Open Graph images</title>
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <main>
-        <h1 className={styles.title}>
-          Welcome to <a href="https://nextjs.org">Next.js!</a>
-        </h1>
+      <header className={styles.header}>
+        <a href="/">
+          <img src="/logo.png" className={styles.logo} />
+          <Typography variant="p" component="h1">
+            IMG Quest
+          </Typography>
+        </a>
 
-        <p className={styles.description}>
-          Get started by editing <code>pages/index.js</code>
-        </p>
-
-        <div className={styles.grid}>
-          <a href="https://nextjs.org/docs" className={styles.card}>
-            <h3>Documentation &rarr;</h3>
-            <p>Find in-depth information about Next.js features and API.</p>
-          </a>
-
-          <a href="https://nextjs.org/learn" className={styles.card}>
-            <h3>Learn &rarr;</h3>
-            <p>Learn about Next.js in an interactive course with quizzes!</p>
-          </a>
-
-          <a
-            href="https://github.com/vercel/next.js/tree/master/examples"
-            className={styles.card}
-          >
-            <h3>Examples &rarr;</h3>
-            <p>Discover and deploy boilerplate example Next.js projects.</p>
-          </a>
-
-          <a
-            href="https://vercel.com/import?filter=next.js&utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
-            className={styles.card}
-          >
-            <h3>Deploy &rarr;</h3>
-            <p>
-              Instantly deploy your Next.js site to a public URL with Vercel.
-            </p>
-          </a>
+        <div className={styles.icons}>
+          <a href="https://twitter.com/wweb_dev" target="_blank" rel="noopener noreferrer"><TwitterIcon /></a>
+          <a href="https://github.com/Vincenius/img-quest" target="_blank" rel="noopener noreferrer"><GitHubIcon /></a>
         </div>
+      </header>
+
+      <main className={styles.main}>
+        <Typography component="h2" className={styles.description}>
+          An open-source API to generate Open Graph images
+        </Typography>
+
+        <OutlinedInput
+          variant="outlined"
+          fullWidth
+          className={styles.copyInput}
+          disabled
+          value={apiLink}
+          endAdornment={
+            <InputAdornment position="end">
+              <ContentCopyIcon />
+            </InputAdornment>
+          }
+        />
+
+        <section className={styles.settingsRow}>
+          <div className={styles.settings}>
+            <Typography component="h2" variant="h5" gutterBottom>
+              Settings
+            </Typography>
+            <div className={styles.layoutCards}>
+              <Card className={styles.preview} onClick={() => setVariant(1)}>
+                <GeneratedImage title="1" description="" variant={1} />
+              </Card>
+              <Card className={styles.preview} onClick={() => setVariant(2)}>
+                <GeneratedImage title="2" description="" variant={2} />
+              </Card>
+              <Card className={styles.preview} onClick={() => setVariant(3)}>
+                <GeneratedImage title="3" description="" variant={3} color="#263238" />
+              </Card>
+              <Card className={styles.preview} onClick={() => setVariant(4)}>
+                <GeneratedImage title="4" description="" variant={4} />
+              </Card>
+
+              {/* todo info more coming soon */}
+            </div>
+
+            <TextField
+              label="Headline" variant="outlined"
+              className={styles.input} fullWidth
+              onChange={e => setHeadline(e.target.value)}
+              defaultValue={defaultTitle}
+            />
+            <TextField
+              label="Description" variant="outlined"
+              className={styles.input} fullWidth
+              onChange={e => setDescription(e.target.value)}
+              defaultValue={defaultDescription}
+            />
+            <TextField
+              label="Image (URL)" variant="outlined"
+              className={styles.input} fullWidth
+              onChange={e => setImage(e.target.value)}
+              defaultValue={defaultImage}
+            />
+
+            <div className={styles.colorInputContainer}>
+              <MuiColorInput value={color} onChange={(c, colors) => setColor(colors.hex)} className={styles.input} label="Color" />
+              <MuiColorInput value={bgColor} onChange={(c, colors) => setBgColor(colors.hex)} className={styles.input} label="Background Color" />
+            </div>
+          </div>
+          <div className={styles.demoContainer}>
+            <BrowserBorder>
+              <GeneratedImage
+                color={color}
+                bgColor={bgColor}
+                title={headline}
+                description={description}
+                variant={variant}
+                background={image}
+              />
+            </BrowserBorder>
+
+            <Typography className={styles.imageInfo}>
+              Need some cool background images? Check the awesome generators at <a href="https://fffuel.co/" target="_blank" rel="noopener noreferrer">fffuel.co</a>
+            </Typography>
+          </div>
+        </section>
+
+        {/* TODO api description */}
       </main>
 
-      <footer>
+      <footer className={styles.footer}>
         <a
-          href="https://vercel.com?utm_source=create-next-app&utm_medium=default-template&utm_campaign=create-next-app"
+          href="https://twitter.com/wweb_dev"
           target="_blank"
           rel="noopener noreferrer"
         >
-          Powered by{' '}
-          <img src="/vercel.svg" alt="Vercel" className={styles.logo} />
+          Created by @wweb_dev
         </a>
       </footer>
-
-      <style jsx>{`
-        main {
-          padding: 5rem 0;
-          flex: 1;
-          display: flex;
-          flex-direction: column;
-          justify-content: center;
-          align-items: center;
-        }
-        footer {
-          width: 100%;
-          height: 100px;
-          border-top: 1px solid #eaeaea;
-          display: flex;
-          justify-content: center;
-          align-items: center;
-        }
-        footer img {
-          margin-left: 0.5rem;
-        }
-        footer a {
-          display: flex;
-          justify-content: center;
-          align-items: center;
-          text-decoration: none;
-          color: inherit;
-        }
-        code {
-          background: #fafafa;
-          border-radius: 5px;
-          padding: 0.75rem;
-          font-size: 1.1rem;
-          font-family: Menlo, Monaco, Lucida Console, Liberation Mono,
-            DejaVu Sans Mono, Bitstream Vera Sans Mono, Courier New, monospace;
-        }
-      `}</style>
-
-      <style jsx global>{`
-        html,
-        body {
-          padding: 0;
-          margin: 0;
-          font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto,
-            Oxygen, Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue,
-            sans-serif;
-        }
-        * {
-          box-sizing: border-box;
-        }
-      `}</style>
     </div>
   )
 }
