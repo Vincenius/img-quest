@@ -3,7 +3,7 @@ import styles from './GeneratedImage.module.css'
 
 export const defaultBgColor = '#263238'
 export const defaultColor = '#f2f3f3'
-export const defaultImage = '/background.jpg'
+export const defaultImage = 'https://img.quest/background.jpg'
 export const defaultTitle = 'My Title'
 export const defaultDescription = 'My Description'
 
@@ -63,7 +63,7 @@ export const getContentCss = ({ bgColor }) => ({
   }
 })
 
-export const getDeviderCss = ({ bgColor }) => ({
+export const getDeviderCss = ({ bgColor, isFrontend = true }) => ({
   1: {
     position: 'absolute',
     right: '0',
@@ -76,13 +76,13 @@ export const getDeviderCss = ({ bgColor }) => ({
   },
   2: {
     position: 'absolute',
-    left: '0',
+    left: '-5%',
     top: '100%',
     display: 'flex',
-    width: '100%',
-    height: '25px',
+    width: '130%',
+    height: '15%',
     backgroundSize: '5% 100%',
-    backgroundImage: `linear-gradient(135deg, ${bgColor} 25%, transparent 25%), linear-gradient(225deg, ${bgColor} 25%, transparent 25%)`,
+    backgroundImage: `linear-gradient(135deg, ${bgColor} ${isFrontend ? '25' : '47.5'}%, transparent ${isFrontend ? '25' : '47.5'}%), linear-gradient(225deg, ${bgColor} 25%, transparent 25%)`,
     backgroundPosition: '0 0',
   },
   3: {
@@ -105,7 +105,7 @@ export const getHeadlineCss = ({ title = '', isFrontend = true }) => ({
 })
 
 export const getDescriptionCss = ({ description = '', isFrontend = true }) => ({
-  fontSize: `${isFrontend ? '1.5vw' : '48px'}`, // `clamp(20px, ${200 / description.length}px, 50px)`,
+  fontSize: `${isFrontend ? '1.8vw' : '48px'}`,
   fontWeight: '400',
   position: 'relative',
   display: 'flex',
@@ -113,17 +113,6 @@ export const getDescriptionCss = ({ description = '', isFrontend = true }) => ({
   width: '100%',
 })
 
-// export const getInfoCss = ({  }) => ({
-//   fontSize: 16,
-//   opacity: 0.7,
-//   position: 'absolute',
-//   bottom: '10px',
-//   right: '10px',
-//   position: 'relative',
-//   zIndex: '2',
-// })
-
-// todo check valid variant
 export const getImageCss = ({  }) => ({
   1: {
     position: 'absolute',
@@ -158,6 +147,7 @@ export const getImageCss = ({  }) => ({
     marginLeft: '5%',
     transform: 'translateY(-50%)',
     borderRadius: '5%',
+    objectFit: 'cover',
   }
 })
 
@@ -177,7 +167,6 @@ const GeneratedImage = ({
       <div style={getDeviderCss({ bgColor })[variant]}></div>
       <h1 style={getHeadlineCss({ title })} className={styles.headline}>{ title }</h1>
       <h2 style={getDescriptionCss({ description })} className={styles.description}>{ description }</h2>
-      {/* <p style={getInfoCss({ })}>created with IMG Quest</p> */}
     </div>
   </div>
 }

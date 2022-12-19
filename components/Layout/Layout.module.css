@@ -1,0 +1,80 @@
+.container {
+  min-height: 100vh;
+}
+
+.containerInner {
+  padding: 1em 2em;
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  padding: 10px 0;
+  margin: 0 auto 50px;
+  font-size: 1.3em;
+}
+
+.header h1 {
+  font-size: 1.3em;
+}
+
+.header a {
+  color: #263238;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+}
+
+.logo {
+  width: 35px;
+  height: auto;
+  margin-right: 0.5em;
+}
+
+.header a:hover,
+.header a:focus,
+.header a:active {
+  opacity: 0.8;
+}
+
+.icons svg {
+  color: #263238;
+  font-size: 1.5em;
+  margin-left: 1.5em;
+}
+
+.icons svg:hover {
+  opacity: 0.8;
+}
+
+.main {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.footer {
+  font-size: 1em;
+  margin: 2em 0 0;
+  padding: 2em;
+  background: #263238;
+  color: #f0f3f5;
+}
+
+.footerInner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+}
+
+@media screen and (max-width: 600px) {
+  .containerInner {
+    padding: 1em;
+  }
+
+  .footer {
+    padding: 1em;
+  }
+}

@@ -1,58 +1,9 @@
-.container {
-  min-height: 100vh;
-  padding: 0 1em;
-  background: #e9dddf;
-}
-
-.header, .footer {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  max-width: 1200px;
-  padding: 10px 0;
-  margin: 0 auto 50px;
-  font-size: 1.3em;
-}
-
-.header h1 {
-  font-size: 1.3em;
-}
-
-.header a {
-  color: #263238;
-  text-decoration: none;
-  display: inline-flex;
-  align-items: center;
-}
-
-.logo {
-  width: 35px;
-  height: auto;
-  margin-right: 0.5em;
-}
-
-.header a:hover,
-.header a:focus,
-.header a:active {
-  opacity: 0.8;
-}
-
 .description {
   color: #263238;
   font-size: 2em;
   text-align: center;
   margin-bottom: 1em;
   font-weight: 300;
-}
-
-.icons svg {
-  color: #263238;
-  font-size: 1.5em;
-  margin-left: 1.5em;
-}
-
-.icons svg:hover {
-  opacity: 0.8;
 }
 
 .copyInput, .input {
@@ -63,12 +14,6 @@
   color: #263238 !important;
   -webkit-text-fill-color: #263238 !important;
 }
-
-.main {
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
 .settingsRow {
   display: flex;
   margin: 4em 0;
@@ -100,10 +45,6 @@
   margin-bottom: 1em;
 }
 
-.footer {
-  font-size: 1em;
-}
-
 .layoutCards {
   display: flex;
   flex-wrap: wrap;
@@ -115,8 +56,6 @@
   width: calc(50% - 20px) !important;
   margin-bottom: 30px;
   cursor: pointer;
-
-  /* TODO active border */
 }
 
 .imageInfo {
@@ -131,6 +70,28 @@
 
 .colorInputContainer > * {
   min-width: 48%;
+}
+
+.copied {
+  opacity: 1;
+  transition: opacity 250ms ease-in-out;
+}
+
+.copiedHidden {
+  opacity: 0;
+  transition: opacity 250ms ease-in-out;
+}
+
+.baseUrl {
+  margin-bottom: 1em;
+}
+
+.baseUrl label {
+  margin-right: 1em;
+}
+
+.tableHead {
+  background: '#263238'
 }
 
 @media screen and (max-width: 800px) {

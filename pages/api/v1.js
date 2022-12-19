@@ -25,8 +25,8 @@ const variants = {
 
 export default async function handler(req, res) {
   const [robotoFont, robotoBoldFont] = await Promise.all([
-    fetch('http://localhost:3000/Roboto-Medium.ttf'), // todo env variable
-    fetch('http://localhost:3000/Roboto-Medium.ttf')
+    fetch('https://img.quest/Roboto-Medium.ttf'), // todo env variable
+    fetch('https://img.quest/Roboto-Medium.ttf')
   ])
   const [robotoArrayBuffer, robotoBoldArrayBuffer] = await Promise.all([
     robotoFont.arrayBuffer(),
@@ -51,7 +51,7 @@ export default async function handler(req, res) {
 
   const background = hasImage
     ? decodeURI(searchParams.get('image'))
-    : `http://localhost:3000/${defaultImage}`; // todo env
+    : `https://img.quest/${defaultImage}`; // todo env
 
   const color = hasColor
     ? '#' + searchParams.get('color')?.slice(0, 6)
@@ -65,7 +65,7 @@ export default async function handler(req, res) {
     ? variants[searchParams.get('variant')] || 1
     : 1;
 
-    // todo fix variant 2 design
+  // todo fix variant 2 design
   return new ImageResponse(
     (
       <div
@@ -73,7 +73,7 @@ export default async function handler(req, res) {
       >
         <img src={background} style={getImageCss({ background })[variant]}/>
         <div style={getContentCss({ variant, bgColor })[variant]}>
-          <div style={getDeviderCss({ bgColor })[variant]}></div>
+          <div style={getDeviderCss({ bgColor, isFrontend: false })[variant]}></div>
           <h1 style={getHeadlineCss({ title, isFrontend: false })}>{ title }</h1>
           <h2 style={getDescriptionCss({ description, isFrontend: false })}>{ description }</h2>
         </div>
@@ -82,6 +82,7 @@ export default async function handler(req, res) {
     {
       width: 1200,
       height: 630,
+      // debug: true,
       fonts: [
         {
           name: 'Roboto',
