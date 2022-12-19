@@ -168,8 +168,8 @@ export default function Home() {
 
       <TableContainer component={Paper}>
         <Table sx={{ minWidth: 500 }}>
-          <TableHead className={styles.tableHead}>
-            <TableRow>
+          <TableHead>
+            <TableRow className={styles.tableHead}>
               <TableCell>Parameter</TableCell>
               <TableCell>Default</TableCell>
               <TableCell>Description</TableCell>

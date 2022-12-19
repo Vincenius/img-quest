@@ -5,14 +5,14 @@ import TwitterIcon from '@mui/icons-material/Twitter'
 import GitHubIcon from '@mui/icons-material/GitHub'
 import styles from './Layout.module.css'
 
-const Layout = ({ children, title, description, link = '' }) => {
+const Layout = ({ children, description = 'An open-source API to generate Open Graph images', link = '' }) => {
   return <div className={styles.container}>
     <div className={styles.containerInner}>
       <Head>
         <meta charset="UTF-8" />
         <meta httpEquiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>IMG Quest | {description}</title>
+        <title>IMG Quest | An open-source API to generate Open Graph images</title>
 
         <meta name="description" content={description} />
         <meta property="og:title" content={`IMG Quest | ${description}`} />

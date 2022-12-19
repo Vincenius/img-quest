@@ -1,5 +1,4 @@
-import fs from 'fs'
-import { ImageResponse } from '@vercel/og';
+import { ImageResponse } from '@vercel/og'
 import {
   defaultBgColor,
   defaultColor,
@@ -51,7 +50,7 @@ export default async function handler(req, res) {
 
   const background = hasImage
     ? decodeURI(searchParams.get('image'))
-    : `https://img.quest/${defaultImage}`; // todo env
+    : defaultImage;
 
   const color = hasColor
     ? '#' + searchParams.get('color')?.slice(0, 6)
