@@ -14,10 +14,17 @@ import TableRow from '@mui/material/TableRow'
 import Paper from '@mui/material/Paper'
 import ContentCopyIcon from '@mui/icons-material/ContentCopy'
 import { MuiColorInput } from 'mui-color-input'
+import { CodeBlock, dracula } from "react-code-blocks"
 import Layout from '../components/Layout/Layout'
 import BrowserBorder from '../components/BrowserBorder/BrowserBorder'
 import GeneratedImage, { defaultBgColor, defaultColor, defaultImage, defaultTitle, defaultDescription } from '../components/GeneratedImage/GeneratedImage'
 import styles from '../styles/Home.module.css'
+
+const metaCode = `<!-- You can include it in your <head> like this: -->
+<meta
+  property="og:image"
+  content="https://img.quest/api/v1?...your_code"
+/>`
 
 const documentationRows = [{
     parameter: 'title',
@@ -127,6 +134,10 @@ export default function Home() {
             onChange={e => setDescription(e.target.value)}
             defaultValue={defaultDescription}
           />
+          <div className={styles.colorInputContainer}>
+            <MuiColorInput value={color} onChange={(c, colors) => setColor(colors.hex)} className={styles.input} label="Color" />
+            <MuiColorInput value={bgColor} onChange={(c, colors) => setBgColor(colors.hex)} className={styles.input} label="Background Color" />
+          </div>
           <TextField
             label="Image (URL)" variant="outlined"
             className={styles.input} fullWidth
@@ -134,10 +145,9 @@ export default function Home() {
             defaultValue={defaultImage}
           />
 
-          <div className={styles.colorInputContainer}>
-            <MuiColorInput value={color} onChange={(c, colors) => setColor(colors.hex)} className={styles.input} label="Color" />
-            <MuiColorInput value={bgColor} onChange={(c, colors) => setBgColor(colors.hex)} className={styles.input} label="Background Color" />
-          </div>
+          <Typography className={styles.imageInfo}>
+            Need some cool background images? Check the awesome generators at <a href="https://fffuel.co/" target="_blank" rel="noopener noreferrer">fffuel.co</a>
+          </Typography>
         </div>
         <div className={styles.demoContainer}>
           <BrowserBorder>
@@ -151,9 +161,14 @@ export default function Home() {
             />
           </BrowserBorder>
 
-          <Typography className={styles.imageInfo}>
-            Need some cool background images? Check the awesome generators at <a href="https://fffuel.co/" target="_blank" rel="noopener noreferrer">fffuel.co</a>
-          </Typography>
+          <div className={styles.metaCode}>
+            <CodeBlock
+              text={metaCode}
+              language="HTML"
+              showLineNumbers={false}
+              theme={dracula}
+            />
+          </div>
         </div>
       </section>
 
