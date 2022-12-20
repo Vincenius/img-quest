@@ -44,6 +44,7 @@ const Layout = ({ children, description = 'An open-source API to generate Open G
         </a>
 
         <div className={styles.icons}>
+          <a href="https://www.producthunt.com/posts/img-quest?utm_source=badge-featured&utm_medium=badge&utm_souce=badge-img&#0045;quest" target="_blank"><img src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=371818&theme=light" alt="IMG&#0032;Quest - An&#0032;open&#0045;source&#0032;API&#0032;to&#0032;generate&#0032;Open&#0032;Graph&#0032;images | Product Hunt" className={styles.productHunt} width="250" height="54" /></a>
           <a href="https://twitter.com/wweb_dev" target="_blank" rel="noopener noreferrer"><TwitterIcon /></a>
           <a href="https://github.com/Vincenius/img-quest" target="_blank" rel="noopener noreferrer"><GitHubIcon /></a>
         </div>

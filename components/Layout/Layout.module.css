@@ -39,6 +39,11 @@
   opacity: 0.8;
 }
 
+.icons {
+  display: flex;
+  align-items: center;
+}
+
 .icons svg {
   color: #263238;
   font-size: 1.5em;
@@ -69,6 +74,11 @@
   justify-content: space-between;
 }
 
+.productHunt {
+  width: 200px;
+  height: 40px;
+}
+
 @media screen and (max-width: 600px) {
   .containerInner {
     padding: 1em;
@@ -76,5 +86,20 @@
 
   .footer {
     padding: 1em;
+  }
+
+  .icons svg {
+    font-size: 1.2em;
+  }
+
+  .productHunt {
+    width: 100px;
+    height: 20px;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .productHunt {
+    display: none;
   }
 }
