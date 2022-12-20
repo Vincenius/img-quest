@@ -45,11 +45,11 @@ const documentationRows = [{
   }, {
     parameter: 'color',
     default: defaultColor.replace('#', ''),
-    description: 'hexadecimal color string without the #'
+    description: 'The text color - A hexadecimal color string without the #'
   }, {
     parameter: 'bgColor',
     default: defaultBgColor.replace('#', ''),
-    description: 'hexadecimal color string without the #'
+    description: 'The background color - A hexadecimal color string without the #'
   }
 ]
 
