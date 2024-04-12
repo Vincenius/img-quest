@@ -5,7 +5,7 @@ export const defaultBgColor = '#263238'
 export const defaultColor = '#f2f3f3'
 export const defaultImage = 'https://img-quest.vercel.app/background.jpg'
 export const defaultTitle = 'My Title'
-export const defaultDescription = 'My Description'
+export const defaultDescription = 'My Subtitle'
 
 const cleanObj = obj => Object.fromEntries(Object.entries(obj).filter(([_, v]) => v != null));
 
