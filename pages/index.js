@@ -23,7 +23,7 @@ import styles from '../styles/Home.module.css'
 const metaCode = `<!-- You can include it in your <head> like this: -->
 <meta
   property="og:image"
-  content="https://img.quest/api/v1?...your_code"
+  content="https://img-quest.vercel.app/api/v1?...your_code"
 />`
 
 const documentationRows = [{
@@ -69,7 +69,7 @@ export default function Home() {
   const imageParam = image && image !== defaultImage ? `&image=${encodeURI(image)}` : ''
   const variantPram = variant !== 1 ? `&variant=${variant}` : ''
 
-  const apiLink = `https://img.quest/api/v1?${headlineParam}${descriptionParam}${variantPram}${colorParam}${bgColorParam}${imageParam}`
+  const apiLink = `https://img-quest.vercel.app/api/v1?${headlineParam}${descriptionParam}${variantPram}${colorParam}${bgColorParam}${imageParam}`
 
   const copyApiCode = () => {
     setIsCopied(true)
@@ -178,7 +178,7 @@ export default function Home() {
 
       <div className={styles.baseUrl}>
         <label>Base URL:</label>
-        <code>https://img.quest/api/v1</code>
+        <code>https://img-quest.vercel.app/api/v1</code>
       </div>
 
       <TableContainer component={Paper}>
