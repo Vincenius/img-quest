@@ -3,7 +3,7 @@ import styles from './GeneratedImage.module.css'
 
 export const defaultBgColor = '#263238'
 export const defaultColor = '#f2f3f3'
-export const defaultImage = 'https://img.quest/background.jpg'
+export const defaultImage = 'https://img-quest.vercel.app/background.jpg'
 export const defaultTitle = 'My Title'
 export const defaultDescription = 'My Description'
 
