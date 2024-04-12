@@ -24,8 +24,8 @@ const variants = {
 
 export default async function handler(req, res) {
   const [robotoFont, robotoBoldFont] = await Promise.all([
-    fetch('https://img.quest/Roboto-Medium.ttf'), // todo env variable
-    fetch('https://img.quest/Roboto-Medium.ttf')
+    fetch('https://img-quest.vercel.app//Roboto-Medium.ttf'), // todo env variable
+    fetch('https://img-quest.vercel.app/Roboto-Medium.ttf')
   ])
   const [robotoArrayBuffer, robotoBoldArrayBuffer] = await Promise.all([
     robotoFont.arrayBuffer(),
